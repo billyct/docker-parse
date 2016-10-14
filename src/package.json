@@ -1,0 +1,12 @@
+{
+  "name": "billyct-parse-server",
+  "version": "1.0.0",
+  "description": "just run parse server with code",
+  "main": "main.js",
+  "author": "billyct",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "parse-server": "*"
+  }
+}

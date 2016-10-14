@@ -1,0 +1,6 @@
+{
+  "apps" : [{
+    "name" : "parse-server",
+    "script" : "main.js"
+  }]
+}

@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  server:
+    build:
+      context: ./server
+    volumes_from:
+      - volumes_source
+      - volumes_data
+    ports:
+      - "1337:1337"
+    links:
+      - mongo:mongo_host
+    environment:
+      PARSE_SERVER_LOGS_FOLDER: /var/logs/parse
+      PARSE_SERVER_APPLICATION_ID: KqsqseDs0FpZAuPoaiqk9N9YxtFAZaWR
+      PARSE_SERVER_MASTER_KEY: vHNS1tq8VdShUL9znGPIdAHudFHOqzXR
+      PARSE_SERVER_URL: "http://localhost:1337/parse"
+      PARSE_SERVER_CLOUD_CODE_MAIN: /var/www/app/cloud/main.js
+      NODE_ENV: "production"
+  mongo:
+    build:
+      context: ./mongo
+    volumes_from:
+      - volumes_data
+    ports:
+      - "27017:27017"
+  volumes_source:
+    image: tianon/true
+    volumes:
+      - ./src:/var/www/app
+  volumes_data:
+    image: tianon/true
+    volumes:
+      - ./data/mongo:/data/db
+      - ./logs/parse:/var/logs/parse

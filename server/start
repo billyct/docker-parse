@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /var/www/app
+npm install --registry=https://registry.npm.taobao.org
+pm2 start pm2.json --no-daemon
